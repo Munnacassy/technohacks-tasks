@@ -1,2 +1,2 @@
 # technohacks-tasks
-                  I have succusfully completed the tasks of Technohacks intenship .
+                  I have successfully completed the tasks of Technohacks intenship .
