@@ -1,62 +1,81 @@
 #include <stdio.h>
+#include <conio.h>
 
-float balance = 0;  // Initial account balance
+int main()
+{
+    int pin,pin1=5555,c=1,ch,amount,balance ;
+    printf("Welcome to holywarly bank\n");
+    start:
+    printf("Enter the pin number\n");
+    scanf("%d",&pin);
+    if(pin==pin1)
+    {
+        printf("Welcome to holywarly bank\n");
+        printf("Please enter your choice\n");
+        printf( "1.Deposite \n  2.Withdraw \n  3.Checkbalance \n  4.Change Pin\n  " );
+        scanf("%d",&ch);
+        switch(ch )
+        {
+        
+        case 1:
+        printf("Enter the deposite amount\n");
+        scanf("%d",&amount);
+        if(amount<=50000)
+        {
+         balance=balance+amount;
+         printf("%d",&balance);
+        }
+        else
+        {
+            printf("max limit\n");
+        }
+        break;
 
-// Function to deposit money
-void deposit(float amount) {
-    balance += amount;
-    printf("Deposit of $%.2f successful\n", amount);
-}
+        case 2:
+        printf("Enter the withdraw amount\n");
+        scanf("%d",&amount);
+        if(amount<=50000)
+        {
+            if(amount<=balance)
+            {
+                balance=balance-amount;
+        printf("After withdrawing %d,current balance=%d\n",amount,balance);
+            }
+            else
+            {
+                printf("insufficent balance\n");
+            }
+        }
+        
+        else
+        {
+        printf("maximun withdraw id done\n");
+        }
+        break;
 
-// Function to withdraw money
-void withdraw(float amount) {
-    if (balance >= amount) {
-        balance -= amount;
-        printf("Withdrawal of $%.2f successful\n", amount);
-    } else {
-        printf("Insufficient balance\n");
+        case 3:
+        printf("Enter the new pin");
+        scanf("%d",&pin1);
+        printf("your pin has been has updated \n login now\n");
+        goto start;
+        break;
+        }
+
     }
-}
-
-// Function to check account balance
-void checkBalance() {
-    printf("Your account balance is $%.2f\n", balance);
-}
-
-int main() {
-    int choice;
-    float amount;
-
-    while (1) {
-        printf("\nATM Simulator\n");
-        printf("1. Deposit\n");
-        printf("2. Withdraw\n");
-        printf("3. Check Balance\n");
-        printf("4. Exit\n");
-        printf("Enter your choice: ");
-        scanf("%d", &choice);
-
-        switch (choice) {
-            case 1:
-                printf("Enter the amount to deposit: $");
-                scanf("%f", &amount);
-                deposit(amount);
-                break;
-            case 2:
-                printf("Enter the amount to withdraw: $");
-                scanf("%f", &amount);
-                withdraw(amount);
-                break;
-            case 3:
-                checkBalance();
-                break;
-            case 4:
-                printf("Thank you for using the ATM. Goodbye!\n");
-                return 0;
-            default:
-                printf("Invalid choice. Please try again.\n");
+    else
+    {
+        printf("Invalid pin. please enter valid pin\n");
+        if(c<3)
+        {
+            goto start;
         }
     }
-
+    printf("press 1 to continue...\n");
+    scanf("%d",&ch);
+    if(ch==1)
+    {
+        goto start;
+       printf("thanks for using..\n") ;
+    }
     return 0;
-}
+} 
